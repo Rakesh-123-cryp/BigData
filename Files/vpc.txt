@@ -1,0 +1,35 @@
+Creating Custom VPC, EC2 Instance and working on SG & NACL
+
+1. Login into your AWS account.
+
+2. Choose VPC Service (search vpc)
+
+3. Choose the region Mumbai
+
+4. Delete the existing VPC and setup custom VPC and its components -> go to custom vpcs -> create vpc -> name snuc-dc-vpc -> ipv4 cidr 192.168.0.0/16 -> create
+subnets -> create subnet -> choose vpc -> subnet name public-subnet -> av zone Asia Pacific -> ipv4 subnet cidr block 192.168.1.0/24 -> create.
+go to internet gateways -> create -> snuc-dc-igw -> create
+click -> actions -> attach to vpc -> attach
+Go to route tables -> click blue rt -> edit routes -> add route 0.0.0.0 internet gateway and choose igw -> save
+
+5. Get 2 elastic public IP
+
+6. Create two EC2 instances and attach the public IP address -> search ec2 -> instances -> launch ->number: 2 -> name VMs -> ubuntu -> proceed without key pair -> launch instance. 
+Go to instances -> change name to web server and web client -> go to elastic IPs -> click web server IP -> associate elastic IP -> 
+choose web server instance ->associate -> back -> click web client IP -> associate -> choose web client IP 
+
+(7 is naming as web server and client but already done)
+
+8. Connect to the instance via EC2 instance connect -> click web server instance -> click connect -> connect
+Check ping 8.8.8.8 -> sudo apt update -> sudo apt install apache2 -> service apache2 status
+Similarly connect web client  -> check ping -> sudo apt update -> sudo apt install links
+
+9. Install Apache (web service) in Web Server
+
+10. Install Links (web client) in Web Client 
+-both done in step 8 itself
+
+11. In the Security Group of Web Server, add rule to allow HTTP access. -> click web server instance id -> security -> click security groups -> edit inbound  ->
+ add rule -> http, anywhere 0.0.0.0 -> save
+
+12. Test the web access from the web client using links app. -> go to web client instance connect -> links http://web server IP

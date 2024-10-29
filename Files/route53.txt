@@ -1,0 +1,27 @@
+Testing Route 53 service
+
+(after doing vpc)
+
+13. Create a Hosted Zone in laws Route 53 service with your 11-digit registration number for ngaws.xyz
+
+eg: 21100101001.ngaws.xyz
+
+14. Login into GoDaddy Domain:
+
+URL: https://www.godaddy.com/ Username: aws-ng
+
+Password: Welcome1!
+
+15. Get the name server (any one) information from the Route 53 dashboard and update the NS record in GoDaddy portal for your subdomain.
+
+16. Back to AWS Route 53 service, create a A record in your hosted zone with the following details
+
+Subdomain: www
+
+IP: IP address of the Web Server
+
+Routing policy: simple
+
+17. check the website reachability with the URL
+
+URL: www.<registration_no>.ngaws.xyz
